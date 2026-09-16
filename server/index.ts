@@ -1298,8 +1298,9 @@ async function startServer() {
     }
   );
 }
-
-startServer().catch((error) => {
-  console.error("[SERVER STARTUP ERROR]", error);
-  process.exit(1);
-});
+if (!process.env.VERCEL) {
+  startServer().catch((error) => {
+    console.error("[SERVER STARTUP ERROR]", error);
+    process.exit(1);
+  });
+}
