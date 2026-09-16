@@ -1,0 +1,15 @@
+{
+  "shipmentId": "CP-2026-001",
+  "vessel": "MV Chennai Star",
+  "imo": "9234567",
+  "origin": "Chennai",
+  "destination": "Dubai",
+  "claimedArrival": "2026-08-19T10:00:00Z",
+  "cargoValueInr": 5000000,
+  "currency": "INR",
+  "document": {
+    "type": "bill_of_lading",
+    "number": "BL-CP-88921",
+    "status": "submitted"
+  }
+}

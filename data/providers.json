@@ -1,0 +1,32 @@
+[
+  {
+    "id": "ais-dubai-demo",
+    "name": "AIS Intelligence Provider",
+    "type": "ais",
+    "region": "Dubai",
+    "priceUsd": 0.20,
+    "confidence": 0.91,
+    "x402Endpoint": "/providers/ais/query",
+    "description": "Synthetic AIS observation for demo purposes"
+  },
+  {
+    "id": "port-dubai-demo",
+    "name": "Port Arrival Provider",
+    "type": "port",
+    "region": "Dubai",
+    "priceUsd": 0.35,
+    "confidence": 0.95,
+    "x402Endpoint": "/providers/port/query",
+    "description": "Synthetic port-arrival observation for demo purposes"
+  },
+  {
+    "id": "doc-consistency-demo",
+    "name": "Document Consistency Provider",
+    "type": "document",
+    "region": "Global",
+    "priceUsd": 0.08,
+    "confidence": 0.80,
+    "x402Endpoint": "/providers/document/query",
+    "description": "Synthetic document cross-check for demo purposes"
+  }
+]

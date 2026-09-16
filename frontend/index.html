@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#07111f" />
+  <title>CargoProof Command Center</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="command-header">
+      <a class="wordmark" href="./index.html" aria-label="CargoProof Command Center">
+        <span class="wordmark-mark">CP</span>
+        <span><strong>CARGOPROOF</strong><small>Command Center</small></span>
+      </a>
+      <div class="header-status"><span class="live-dot"></span><strong>LIVE</strong><span class="status-divider"></span><span>REAL PAYMENT MODE</span></div>
+      <div class="header-meta"><span>ALGORAND TESTNET</span><span class="header-divider"></span><span>USDC <b>10458941</b></span><span class="header-divider"></span><span>DEMO_MODE <b>OFF</b></span></div>
+    </header>
+
+    <main class="dashboard">
+      <section class="intro-row">
+        <div>
+          <p class="kicker">AUTONOMOUS CARGO VERIFICATION <span>/</span> SETTLEMENT CONTROL</p>
+          <h1>Trust is a <em>verified</em> state.</h1>
+          <p class="intro-copy">CargoProof purchases independent evidence at the moment a claim needs it, then lets the verification engine decide what happens to the money.</p>
+        </div>
+        <div class="explainer-strip"><span class="strip-index">01</span><span>Claim arrives</span><i>→</i><span>Evidence is bought</span><i>→</i><span>Escrow follows proof</span></div>
+      </section>
+
+      <section class="control-bar">
+        <div class="scenario-control"><span class="field-label">ACTIVE SHIPMENT</span><div class="scenario-buttons"><button class="scenario-btn" data-scenario="clean"><b>CP001</b><span>CLEAN</span></button><button class="scenario-btn" data-scenario="fraud"><b>CP002</b><span>FRAUD</span></button></div></div>
+        <div class="control-note"><span class="pulse-line"></span><span id="runStatus">Ready for verification</span></div>
+        <button class="run-button" id="runButton"><span class="run-icon">↗</span> Run Cargo Verification</button>
+      </section>
+
+      <section class="summary-grid" aria-label="Shipment summary">
+        <article class="panel shipment-card"><div class="panel-top"><span class="section-label">SHIPMENT CLAIM</span><span id="scenarioBadge" class="status-chip neutral">CLEAN SCENARIO</span></div><div class="ship-id" id="shipId">CP001</div><h2>MV Chennai Star</h2><div class="route-line"><span>Chennai Port</span><i>→</i><span>Singapore</span></div><div class="detail-grid"><div><span>CLAIMED STATUS</span><strong>IN TRANSIT</strong></div><div><span>DECLARED VALUE</span><strong>$45,000 USD</strong></div><div><span>CONTAINER</span><strong>ABC123</strong></div><div><span>CLAIM DATE</span><strong>22 Aug 2026</strong></div></div></article>
+        <article class="panel verdict-card"><div class="panel-top"><span class="section-label">VERIFICATION OUTCOME</span><span class="engine-live">ENGINE ONLINE</span></div><div id="verificationStatus" class="verdict-value pending">PENDING</div><div class="verdict-decision" id="decisionText">Awaiting verification run</div><div class="confidence-row"><span>CONFIDENCE</span><strong id="confidence">--</strong></div><div class="confidence-track"><span id="confidenceBar"></span></div></article>
+        <article class="panel escrow-card"><div class="panel-top"><span class="section-label">ESCROW CONTROL</span><span class="lock-icon">⌑</span></div><div id="escrowState" class="escrow-value pending">PENDING</div><div id="escrowMessage" class="escrow-message">Settlement boundary awaiting engine verdict.</div><div class="escrow-rule"><span>PROTECTED VALUE</span><strong>₹50,00,000</strong></div></article>
+      </section>
+
+      <section class="pipeline panel"><div class="section-heading"><div><span class="section-label">EXECUTION TRACE</span><h2>Verification pipeline</h2></div><span class="trace-note">EVENTS FROM LIVE BACKEND STATE</span></div><div id="pipelineNodes" class="pipeline-nodes"></div></section>
+
+      <section class="section-heading standalone-heading"><div><span class="section-label">PAYMENT RAIL</span><h2>x402 Evidence Procurement</h2></div><span class="heading-caption">The provider releases data only after payment is accepted.</span></section>
+      <section id="providerGrid" class="provider-grid"></section>
+
+      <section class="content-grid">
+        <article class="panel event-panel"><div class="section-heading"><div><span class="section-label">AUDIT STREAM</span><h2>Live payment event log</h2></div><span class="stream-live"><span class="live-dot"></span> STREAMING</span></div><div id="timeline" class="event-stream"></div></article>
+        <article class="panel verification-panel"><div class="section-heading"><div><span class="section-label">DECISION ENGINE</span><h2>Verification Engine</h2></div><span class="engine-badge">RULE-BASED</span></div><div id="rulesList" class="rules-list"></div><div class="engine-footer"><span>Evidence hash</span><code id="engineHash">Awaiting report</code></div></article>
+      </section>
+
+      <section class="content-grid lower-grid">
+        <article class="panel evidence-panel"><div class="section-heading"><div><span class="section-label">PROOF PACKAGE</span><h2>Evidence bundle</h2></div><span id="evidenceCount" class="count-badge">0 SOURCES</span></div><div id="evidenceList" class="evidence-list"></div></article>
+        <article class="panel settlement-panel"><div class="section-heading"><div><span class="section-label">PUBLIC LEDGER RAIL</span><h2>Algorand settlement</h2></div><span class="testnet-badge">TESTNET</span></div><div class="ledger-details"><div><span>NETWORK</span><strong>algorand:SGO1...CDe</strong></div><div><span>ASSET</span><strong>USDC / 10458941</strong></div><div><span>FACILITATOR</span><strong>facilitator.goplausible.xyz</strong></div><div><span>PAY TO</span><details class="address-detail"><summary id="payTo">Configured address</summary><code id="payToFull"></code><button class="copy-btn" id="copyPayTo">COPY</button></details></div></div><div class="tx-list" id="txList"><div class="empty-state">Settlement transaction IDs appear after a paid run.</div></div></article>
+      </section>
+
+      <section class="bottom-grid"><article class="how-panel"><div class="section-heading"><div><span class="section-label">30-SECOND BRIEF</span><h2>How CargoProof works</h2></div></div><div class="how-steps"><div><b>01</b><span>Claim arrives</span></div><div><b>02</b><span>Agent spots evidence gap</span></div><div><b>03</b><span>Provider returns HTTP 402</span></div><div><b>04</b><span>x402 pays in USDC</span></div><div><b>05</b><span>Engine verifies proof</span></div><div><b>06</b><span>Escrow releases or holds</span></div></div></article><article class="panel assistant-panel"><div class="section-heading"><div><span class="section-label">EXPLANATION LAYER</span><h2>CargoProof Assistant</h2></div><span class="local-badge" id="assistantBadge">LIVE BACKEND</span></div>
+        <div id="chatMessages" class="chat-messages">
+          <div class="chat-msg chat-msg-assistant"><p>Ask about a shipment, verification, payment, escrow, or Algorand transaction. I only answer from CargoProof's real backend data — I never make up shipment or payment details.</p></div>
+        </div>
+        <div class="question-row" id="chatSuggestions">
+          <button type="button" data-prompt="Verify CP001">Verify CP001</button>
+          <button type="button" data-prompt="Explain CP002">Explain CP002</button>
+          <button type="button" data-prompt="Show evidence for CP001">Show evidence for CP001</button>
+          <button type="button" data-prompt="What is the escrow status?">Escrow status</button>
+          <button type="button" data-prompt="How much did verification cost?">Verification cost</button>
+        </div>
+        <form id="chatForm" class="chat-input-row" autocomplete="off">
+          <input id="chatInput" type="text" placeholder="e.g. Verify CP001, or paste an Algorand transaction ID..." maxlength="2000" />
+          <button type="submit" id="chatSend">Ask</button>
+        </form>
+      </article></section>
+    </main>
+    <footer><span>Evidence Source: Simulated Demo Data</span><span>Payments: REAL Algorand Testnet</span><span>© CargoProof / verification control plane</span></footer>
+  </div>
+  <script src="./dashboard.js"></script>
+  <script src="./assistant.js"></script>
+</body>
+</html>

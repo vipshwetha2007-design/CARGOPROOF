@@ -1,0 +1,33 @@
+{
+  "name": "cargoproof",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Agent-native cargo verification, x402 evidence procurement, and Algorand escrow MVP",
+  "type": "module",
+  "scripts": {
+    "start": "tsx server/index.ts",
+    "dev": "concurrently \"tsx server/index.ts\" \"tsx agent/agent.ts\"",
+    "server": "tsx server/index.ts",
+    "agent": "tsx agent/agent.ts",
+    "frontend": "npx serve frontend -l 5173",
+    "build": "tsc --noEmit",
+    "contract:compile": "python scripts/compile_contract.py",
+    "contract:deploy": "python scripts/deploy.py"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.19.0",
+    "@types/node": "^24.0.0",
+    "@x402/avm": "^2.23.0",
+    "@x402/core": "^2.23.0",
+    "@x402/fetch": "^2.23.0",
+    "@x402/hono": "^2.23.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "hono": "^4.9.0",
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.0"
+  }
+}

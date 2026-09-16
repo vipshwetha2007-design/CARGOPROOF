@@ -1,0 +1,104 @@
+{
+  "shipments": {
+    "CP-CLEAN": {
+      "shipment_id": "CP-CLEAN",
+      "vessel_imo": "IMO1001",
+      "container_number": "ABC1230",
+      "origin_port": "Chennai",
+      "destination_port": "Dubai",
+      "claimed_status": "IN_TRANSIT",
+      "cargo_description": "Industrial machinery parts",
+      "declared_value": 5000000
+    },
+    "CP-FRAUD": {
+      "shipment_id": "CP-FRAUD",
+      "vessel_imo": "IMO1002",
+      "container_number": "ABC1231",
+      "origin_port": "Chennai",
+      "destination_port": "Dubai",
+      "claimed_status": "IN_TRANSIT",
+      "cargo_description": "Industrial machinery parts",
+      "declared_value": 5000000
+    }
+  },
+  "vessels": {
+    "IMO1001": {
+      "imo_number": "IMO1001",
+      "name": "MV Chennai Star",
+      "status": "IN_TRANSIT",
+      "last_updated_offset_hours": 1
+    },
+    "IMO1002": {
+      "imo_number": "IMO1002",
+      "name": "MV Chennai Star",
+      "status": "IN_TRANSIT",
+      "last_updated_offset_hours": 1
+    }
+  },
+  "containers": {
+    "ABC1230": {
+      "container_number": "ABC1230",
+      "vessel_imo": "IMO1001",
+      "origin_port": "Chennai",
+      "destination_port": "Dubai",
+      "cargo_description": "Industrial machinery parts"
+    },
+    "ABC1231": {
+      "container_number": "ABC1231",
+      "vessel_imo": "IMO9999",
+      "origin_port": "Chennai",
+      "destination_port": "Dubai",
+      "cargo_description": "Industrial machinery parts"
+    }
+  },
+  "container_events": {
+    "ABC1230": [
+      { "event_type": "ARRIVAL", "port": "Chennai", "timestamp_offset_hours": 10, "vessel_imo": "IMO1001" },
+      { "event_type": "LOADED", "port": "Chennai", "timestamp_offset_hours": 8, "vessel_imo": "IMO1001" },
+      { "event_type": "DEPARTURE", "port": "Chennai", "timestamp_offset_hours": 6, "vessel_imo": "IMO1001" }
+    ],
+    "ABC1231": [
+      { "event_type": "ARRIVAL", "port": "Chennai", "timestamp_offset_hours": 10, "vessel_imo": "IMO1002" },
+      { "event_type": "LOADED", "port": "Chennai", "timestamp_offset_hours": 8, "vessel_imo": "IMO1002" },
+      { "event_type": "DEPARTURE", "port": "Chennai", "timestamp_offset_hours": 6, "vessel_imo": "IMO1002" }
+    ]
+  },
+  "gps": {
+    "IMO1001": [
+      { "lat": 7.17355, "lon": 92.04535, "timestamp_offset_hours": 1, "vessel_imo": "IMO1001" }
+    ],
+    "IMO1002": [
+      { "lat": 7.17355, "lon": 92.04535, "timestamp_offset_hours": 1, "vessel_imo": "IMO1002" }
+    ]
+  },
+  "inspections": {
+    "CP-CLEAN": { "shipment_id": "CP-CLEAN", "result": "PASS", "inspector": "QA-1", "timestamp_offset_hours": 2 },
+    "CP-FRAUD": { "shipment_id": "CP-FRAUD", "result": "PASS", "inspector": "QA-1", "timestamp_offset_hours": 2 }
+  },
+  "documents": {
+    "CP-CLEAN": [
+      {
+        "document_type": "bill_of_lading",
+        "container_number": "ABC1230",
+        "vessel_name": "MV Chennai Star",
+        "origin_port": "Chennai",
+        "destination_port": "Dubai",
+        "declared_cargo": "Industrial machinery parts",
+        "declared_value": 5000000,
+        "issued_at_offset_hours": 12
+      }
+    ],
+    "CP-FRAUD": [
+      {
+        "document_type": "bill_of_lading",
+        "container_number": "ABC1231",
+        "vessel_name": "MV Chennai Star",
+        "origin_port": "Chennai",
+        "destination_port": "Dubai",
+        "declared_cargo": "Industrial machinery parts",
+        "declared_value": 5000000,
+        "issued_at_offset_hours": 12
+      }
+    ]
+  }
+}
