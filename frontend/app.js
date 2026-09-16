@@ -1,4 +1,4 @@
-const API = "http://localhost:4021";
+const API = "";
 
 const $ = (id) => document.getElementById(id);
 
