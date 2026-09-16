@@ -35,7 +35,7 @@ import { wrapFetchWithPayment } from "@x402/fetch";
 // APP
 // ============================================================
 
-const app = new Hono();
+export const app = new Hono();
 
 app.use("*", cors());
 
